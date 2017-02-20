@@ -2,9 +2,6 @@
 // <copyright file="LineString.cs" company="Joerg Battermann">
 //   Copyright © Joerg Battermann 2014
 // </copyright>
-// <summary>
-//   Defines the <see cref="https://tools.ietf.org/html/rfc7946#section-3.1.4">LineString</see> type.
-// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -16,8 +13,11 @@ using Newtonsoft.Json;
 namespace GeoJSON.Net.Geometry
 {
     /// <summary>
-    ///     Defines the <see cref="https://tools.ietf.org/html/rfc7946#section-3.1.4">LineString</see> type.
+    /// Defines the LineString type.
     /// </summary>
+    /// <remarks>
+    /// See https://tools.ietf.org/html/rfc7946#section-3.1.4
+    /// </remarks>
     [JsonObject(MemberSerialization.OptIn)]
     public class LineString : GeoJSONObject, IGeometryObject, IEqualityComparer<LineString>, IEquatable<LineString>
     {
@@ -30,11 +30,10 @@ namespace GeoJSON.Net.Geometry
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="LineString" /> class.
+        /// Initializes a new instance of the <see cref="LineString" /> class.
         /// </summary>
         /// <param name="coordinates">The coordinates.</param>
-        public LineString(IEnumerable<GeographicPosition> coordinates)
-            : base()
+        public LineString(IEnumerable<IPosition> coordinates)
         {
             if (coordinates == null)
             {
@@ -55,7 +54,7 @@ namespace GeoJSON.Net.Geometry
         }
 
         /// <summary>
-        ///     Gets the Positions.
+        /// Gets the Positions.
         /// </summary>
         /// <value>The Positions.</value>
         [JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
@@ -63,10 +62,10 @@ namespace GeoJSON.Net.Geometry
         public List<GeographicPosition> Coordinates { get; private set; }
 
         /// <summary>
-        ///     Determines whether this instance has its first and last coordinate at the same position and thereby is closed.
+        /// Determines whether this instance has its first and last coordinate at the same position and thereby is closed.
         /// </summary>
         /// <returns>
-        ///     <c>true</c> if this instance is closed; otherwise, <c>false</c>.
+        /// <c>true</c> if this instance is closed; otherwise, <c>false</c>.
         /// </returns>
         public bool IsClosed()
         {
@@ -75,7 +74,7 @@ namespace GeoJSON.Net.Geometry
             if (firstCoordinate != null)
             {
                 var lastCoordinate = Coordinates[Coordinates.Count - 1] as GeographicPosition;
-
+               
                 return firstCoordinate.Latitude == lastCoordinate.Latitude
                        && firstCoordinate.Longitude == lastCoordinate.Longitude
                        && firstCoordinate.Altitude == lastCoordinate.Altitude;
@@ -85,11 +84,13 @@ namespace GeoJSON.Net.Geometry
         }
 
         /// <summary>
-        ///     Determines whether this LineString is a
-        ///     <see cref="https://tools.ietf.org/html/rfc7946#section-3.1.1">LinearRing</see>.
+        /// Determines whether this LineString is a LinearRing.
         /// </summary>
+        /// <remarks>
+        /// See https://tools.ietf.org/html/rfc7946#section-3.1.1
+        /// </remarks>
         /// <returns>
-        ///     <c>true</c> if it is a linear ring; otherwise, <c>false</c>.
+        /// <c>true</c> if it is a linear ring; otherwise, <c>false</c>.
         /// </returns>
         public bool IsLinearRing()
         {
@@ -139,7 +140,7 @@ namespace GeoJSON.Net.Geometry
             {
                 return false;
             }
-            return left.Equals(right);
+            return left != null && left.Equals(right);
         }
 
         /// <summary>
