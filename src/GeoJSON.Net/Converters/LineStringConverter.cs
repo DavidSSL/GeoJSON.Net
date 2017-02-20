@@ -48,7 +48,7 @@ namespace GeoJSON.Net.Converters
                 ? serializer.Deserialize<double[][]>(reader)
                 : (double[][])existingValue;
 
-            IList<IPosition> positions = new List<IPosition>(coordinates.Length);
+            IList<GeographicPosition> positions = new List<GeographicPosition>(coordinates.Length);
 
             foreach (var coordinate in coordinates)
             {
@@ -75,7 +75,7 @@ namespace GeoJSON.Net.Converters
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var coordinateElements = value as List<IPosition>;
+            var coordinateElements = value as List<GeographicPosition>;
             if (coordinateElements != null && coordinateElements.Count > 0)
             {
                 var coordinateArray = new JArray();
@@ -83,7 +83,7 @@ namespace GeoJSON.Net.Converters
                 foreach (var position in coordinateElements)
                 {
                     // TODO: position types should expose a double[] coordinates property that can be used to write values 
-                    var coordinates = (GeographicPosition)position;
+                    var coordinates = position;
                     var coordinateElement = new JArray(coordinates.Longitude, coordinates.Latitude);
                     if (coordinates.Altitude.HasValue)
                     {

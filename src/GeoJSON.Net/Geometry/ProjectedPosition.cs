@@ -1,21 +1,13 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ProjectedPosition.cs" company="Joerg Battermann">
-//   Copyright © Joerg Battermann 2014
-// </copyright>
-// <summary>
-//   Defines the Projected Position type a.k.a. <see cref="https://tools.ietf.org/html/rfc7946#section-3.1.1">Projected Coordinate Reference System</see>.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+﻿using System;
+using System.Globalization;
 
 namespace GeoJSON.Net.Geometry
 {
-    using System;
-    using System.Globalization;
-
+    [Obsolete("This is no longer supported in the current GeoJSON RFC")]
     /// <summary>
     /// Defines the Projected Position type a.k.a. <see cref="https://tools.ietf.org/html/rfc7946#section-3.1.1">Projected Coordinate Reference System</see>.
     /// </summary>
-    public class ProjectedPosition : Position
+    public class ProjectedPosition
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectedPosition"/> class.

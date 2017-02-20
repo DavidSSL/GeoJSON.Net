@@ -63,12 +63,12 @@ namespace GeoJSON.Net.Tests.Geometry
         {
             var coordinates = new List<GeographicPosition>
             {
-                new GeographicPosition(52.370725881211314, 4.889259338378906),
-                new GeographicPosition(52.3711451105601, 4.895267486572266),
-                new GeographicPosition(52.36931095278263, 4.892091751098633),
-                new GeographicPosition(52.370725881211314, 4.889259338378906)
+                new GeographicPosition(52.370725881211, 4.889259338378),
+                new GeographicPosition(52.371145110560, 4.895267486572),
+                new GeographicPosition(52.369310952782, 4.892091751098),
+                new GeographicPosition(52.370725881211, 4.889259338378)
             };
-
+            
             var expectedLineString = new LineString(coordinates);
 
             var json = GetExpectedJson();

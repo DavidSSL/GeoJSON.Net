@@ -1,4 +1,6 @@
-﻿namespace GeoJSON.Net.Geometry
+﻿using System;
+
+namespace GeoJSON.Net.Geometry
 {
     /// <summary>
     /// A position is the fundamental geometry construct. 
@@ -9,5 +11,6 @@
     /// </summary>
     public class Position : IPosition
     {
+        
     }
 }

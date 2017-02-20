@@ -26,7 +26,6 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         /// <param name="coordinates">The coordinates.</param>
         public MultiPoint(List<Point> coordinates = null)
-            : base()
         {
             Coordinates = coordinates ?? new List<Point>();
             Type = GeoJSONObjectType.MultiPoint;

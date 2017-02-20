@@ -61,8 +61,8 @@
     <Compile Include="DoubleTenDecimalPlaceComparer.cs" />
     <Compile Include="GeoJSONObject.cs" />
     <Compile Include="Geometry\GeometryCollection.cs" />
-    <Compile Include="Geometry\ProjectedPosition.cs" />
     <Compile Include="Geometry\IPosition.cs" />
+    <Compile Include="Geometry\ProjectedPosition.cs" />
     <Compile Include="Geometry\MultiLineString.cs" />
     <Compile Include="Geometry\LineString.cs" />
     <Compile Include="Geometry\MultiPoint.cs" />

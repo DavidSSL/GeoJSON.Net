@@ -16,7 +16,7 @@ namespace GeoJSON.Net.Geometry
 {
     /// <summary>
     ///     Defines the Geographic Position type
-    ///     <see cref="https://tools.ietf.org/html/rfc7946#section-3.1.1">Position</see>.
+    ///     See https://tools.ietf.org/html/rfc7946#section-3.1.1
     /// </summary>
     public class GeographicPosition : Position, IEqualityComparer<GeographicPosition>, IEquatable<GeographicPosition>
     {
@@ -97,7 +97,6 @@ namespace GeoJSON.Net.Geometry
         ///     Prevents a default instance of the <see cref="GeographicPosition" /> class from being created.
         /// </summary>
         private GeographicPosition()
-            : base()
         {
             Coordinates = new double?[3];
         }

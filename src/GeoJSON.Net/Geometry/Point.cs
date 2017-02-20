@@ -30,7 +30,7 @@ namespace GeoJSON.Net.Geometry
         ///     Initializes a new instance of the <see cref="Point" /> class.
         /// </summary>
         /// <param name="coordinates">The Position.</param>
-        public Point(IPosition coordinates)
+        public Point(GeographicPosition coordinates)
             : this()
         {
             if (coordinates == null)
@@ -48,7 +48,7 @@ namespace GeoJSON.Net.Geometry
         /// <value>The Coordinates.</value>
         [JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PointConverter))]
-        public IPosition Coordinates { get; private set; }
+        public GeographicPosition Coordinates { get; private set; }
 
         #region IEqualityComparer, IEquatable
 

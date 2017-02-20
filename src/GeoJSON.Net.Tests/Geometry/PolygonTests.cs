@@ -35,7 +35,7 @@ namespace GeoJSON.Net.Tests.Geometry
 
             var expectedPolygon = new Polygon(new List<LineString>
             {
-                new LineString(new List<IPosition>
+                new LineString(new List<GeographicPosition>
                 {
                     new GeographicPosition(34.9895035675793, -84.3228149414063),
                     new GeographicPosition(35.2198194079344, -84.2912292480469),
@@ -214,7 +214,7 @@ namespace GeoJSON.Net.Tests.Geometry
                     new GeographicPosition(34.9850031301711, -84.22119140625),
                     new GeographicPosition(34.9895035675793, -84.3228149414063),
                 }),
-                new LineString(new List<IPosition>
+                new LineString(new List<GeographicPosition>
                 {
                     new GeographicPosition(35.7420538306804, -75.6903076171875),
                     new GeographicPosition(35.7420538306804, -75.5914306640625),
@@ -305,5 +305,26 @@ namespace GeoJSON.Net.Tests.Geometry
             Assert.AreEqual(left.GetHashCode(), right.GetHashCode());
         }
 
+        [Test]
+        public void Can_Deserialize_And_Read_Lat_Long()
+        {
+            var json = GetExpectedJson();
+
+            var expectedPolygon = new Polygon(new List<LineString>
+            {
+                new LineString(new List<GeographicPosition>
+                {
+                    new GeographicPosition(52.379790828551016, 5.3173828125),
+                    new GeographicPosition(52.36721467920585, 5.456085205078125),
+                    new GeographicPosition(52.303440474272755, 5.386047363281249, 4.23),
+                    new GeographicPosition(52.379790828551016, 5.3173828125),
+                })
+            });
+
+            var actualPolygon = JsonConvert.DeserializeObject<Polygon>(json);
+
+            Assert.AreEqual(expectedPolygon.Coordinates[0].Coordinates[0].Latitude, actualPolygon.Coordinates[0].Coordinates[0].Latitude);
+            Assert.AreEqual(expectedPolygon.Coordinates[0].Coordinates[0].Longitude, actualPolygon.Coordinates[0].Coordinates[0].Longitude);
+        }
     }
 }

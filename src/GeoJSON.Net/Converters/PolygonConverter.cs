@@ -50,7 +50,7 @@ namespace GeoJSON.Net.Converters
 
             foreach (var ring in rings)
             {
-                var positions = (IEnumerable<IPosition>)LineStringConverter.ReadJson(reader, typeof(LineString), ring, serializer);
+                var positions = (IEnumerable<GeographicPosition>)LineStringConverter.ReadJson(reader, typeof(LineString), ring, serializer);
                 lineStrings.Add(new LineString(positions));
             }
 

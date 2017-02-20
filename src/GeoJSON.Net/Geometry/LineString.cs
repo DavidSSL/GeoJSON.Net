@@ -26,7 +26,6 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         [JsonConstructor]
         protected internal LineString()
-            : base()
         {
         }
 
@@ -34,7 +33,7 @@ namespace GeoJSON.Net.Geometry
         ///     Initializes a new instance of the <see cref="LineString" /> class.
         /// </summary>
         /// <param name="coordinates">The coordinates.</param>
-        public LineString(IEnumerable<IPosition> coordinates)
+        public LineString(IEnumerable<GeographicPosition> coordinates)
             : base()
         {
             if (coordinates == null)
@@ -61,7 +60,7 @@ namespace GeoJSON.Net.Geometry
         /// <value>The Positions.</value>
         [JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
         [JsonConverter(typeof(LineStringConverter))]
-        public List<IPosition> Coordinates { get; private set; }
+        public List<GeographicPosition> Coordinates { get; private set; }
 
         /// <summary>
         ///     Determines whether this instance has its first and last coordinate at the same position and thereby is closed.

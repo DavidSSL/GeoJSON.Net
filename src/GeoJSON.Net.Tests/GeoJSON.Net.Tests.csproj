@@ -120,6 +120,9 @@
     <Content Include="Geometry\MultiPointTests_Can_Serialize.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Geometry\PolygonTests_Can_Deserialize_And_Read_Lat_Long.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

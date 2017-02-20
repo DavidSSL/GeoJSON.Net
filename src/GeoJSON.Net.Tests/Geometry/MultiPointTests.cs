@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -40,6 +41,9 @@ namespace GeoJSON.Net.Tests.Geometry
             var json = GetExpectedJson();
             var actualMultiPoint = JsonConvert.DeserializeObject<MultiPoint>(json);
 
+            Assert.IsNotNull(actualMultiPoint);
+            Assert.IsNotNull(actualMultiPoint.Coordinates);
+            Assert.AreEqual(2, actualMultiPoint.Coordinates.Count);
             Assert.AreEqual(expectedMultiPoint, actualMultiPoint);
         }
 
